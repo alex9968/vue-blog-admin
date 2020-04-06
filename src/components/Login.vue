@@ -26,8 +26,8 @@ export default {
   data () {
     return {
       loginForm: {
-        username: 'alen',
-        password: '123'
+        username: 'admin',
+        password: '123456'
       },
       loginFormRules: {
         username: [
@@ -54,6 +54,8 @@ export default {
         const res = await this.axios.post('login', this.loginForm)
         if (res.data.meta.status !== 200) return this.$message.err('Login failed!')
         this.$message.success('Login success!')
+        window.sessionStorage.setItem('token',res.data.data.token)
+        this.$router.push('/home')
       })
     }
 
