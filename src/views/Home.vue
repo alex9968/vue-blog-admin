@@ -13,14 +13,15 @@
           background-color="#333744"
           text-color="#fff"
           active-text-color="#ffd04b"
-          unique-opened>
+          unique-opened router
+          :default-active="activePath">
           <el-submenu :index="item.id + ''" v-for="item in menulist" :key="item.id">
             <template slot="title">
               <i class="el-icon-location"></i>
               <span>{{item.authName}}</span>
             </template>
-            <el-menu-item :index="subItem.id + ''" v-for="subItem in item.children" :key="subItem.id">
-              <template slot="title">
+            <el-menu-item :index="'/' + subItem.path" v-for="subItem in item.children" :key="subItem.id" @click="saveNavState('/' + subItem.path)">
+              <template slot="title" >
                 <i class="el-icon-menu"></i>
                 <span>{{subItem.authName}}</span>
               </template>
@@ -44,10 +45,12 @@ export default {
   },
   created () {
     this.getMenuList()
+    this.activePath = window.sessionStorage.getItem('activePath')
   },
   data () {
     return {
-      menulist: []
+      menulist: [],
+      activePath: ''
     }
   },
   methods: {
@@ -61,6 +64,9 @@ export default {
       if (res.meta.status !== 200) return this.$message.error(res.meta.msg)
       this.menulist = res.data
       console.log(this.menulist)
+    },
+    saveNavState (activePath) {
+      window.sessionStorage.setItem('activePath', activePath)
     }
   }
 }
