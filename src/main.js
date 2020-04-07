@@ -5,8 +5,9 @@ import './plugins/element.js'
 import './assets/css/global.css'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
-import { Message } from 'element-ui'
+import { Message, MessageBox } from 'element-ui'
 Vue.prototype.$message = Message
+Vue.prototype.$confirm = MessageBox.confirm
 axios.defaults.baseURL = 'https://www.liulongbin.top:8888/api/private/v1/'
 axios.interceptors.request.use(config => {
   console.log(config)

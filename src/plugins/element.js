@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import { Button, Row, Tooltip, Switch, Col, Table, TableColumn, Card, Form, FormItem, Input, Header, Container, Aside, Main, Menu, Submenu, MenuItemGroup, MenuItem, Breadcrumb, BreadcrumbItem } from 'element-ui'
+import { Button, Dialog, Pagination, Tooltip, Switch, Row, Col, Table, TableColumn, Card, Form, FormItem, Input, Header, Container, Aside, Main, Menu, Submenu, MenuItemGroup, MenuItem, Breadcrumb, BreadcrumbItem } from 'element-ui'
 
 // import { Message } frm 'element-ui'
 
@@ -24,5 +24,7 @@ Vue.use(Table)
 Vue.use(TableColumn)
 Vue.use(Switch)
 Vue.use(Tooltip)
+Vue.use(Pagination)
+Vue.use(Dialog)
 // golbal mount
 // Vue.proptype.$message = Message

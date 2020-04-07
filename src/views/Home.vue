@@ -75,6 +75,7 @@ export default {
 <style lang="less" scoped>
 .home-container {
   height: 100%;
+  margin: 0px;
 }
 
 .el-header {
