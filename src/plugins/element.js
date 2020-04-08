@@ -1,5 +1,19 @@
 import Vue from 'vue'
-import { Button, Dialog, Pagination, Tooltip, Switch, Row, Col, Table, TableColumn, Card, Form, FormItem, Input, Header, Container, Aside, Main, Menu, Submenu, MenuItemGroup, MenuItem, Breadcrumb, BreadcrumbItem } from 'element-ui'
+import {
+  Button,
+  Dialog,
+  Pagination,
+  Tooltip,
+  Switch,
+  Row, Col,
+  Table, TableColumn,
+  Card,
+  Form, FormItem,
+  Input,
+  Header, Container, Aside, Main,
+  Menu, Submenu, MenuItemGroup, MenuItem,
+  Breadcrumb, BreadcrumbItem
+} from 'element-ui'
 
 // import { Message } frm 'element-ui'
 
