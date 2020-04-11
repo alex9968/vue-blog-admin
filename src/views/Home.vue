@@ -29,21 +29,21 @@
           <!-- </el&#45;submenu> -->
 
           <el-menu-item index="users" key="user" @click="saveNavState('/users')">
-            <i class="el-icon-menu"></i>
+            <i class="el-icon-user"></i>
             <span slot="title">用户列表</span>
           </el-menu-item>
           <el-menu-item index="new" key="new" @click="saveNavState('/new')">
-            <i class="el-icon-menu"></i>
+            <i class="el-icon-edit"></i>
             <span slot="title">新建文章</span>
           </el-menu-item>
 
           <el-menu-item index="list" key="list" @click="saveNavState('/list')">
-            <i class="el-icon-document"></i>
+            <i class="el-icon-menu"></i>
             <span slot="title">文章管理</span>
           </el-menu-item>
           <el-menu-item index="chat" key="chat" @click="saveNavState('/chat')">
-            <i class="el-icon-setting"></i>
-            <span slot="title">聊天室</span>
+            <i class="el-icon-chat-dot-square"></i>
+            <span slot="title">反馈收集</span>
           </el-menu-item>
 
         </el-menu>
