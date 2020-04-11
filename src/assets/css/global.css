@@ -17,4 +17,7 @@ html, body, #app{
 .el-pagination {
 	margin-top: 15px;
 }
+.el-input {
+  margin-top: 15px;
+}
 

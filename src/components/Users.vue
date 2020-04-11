@@ -179,6 +179,7 @@ export default {
   created () {
     this.getUserList()
   },
+
   methods: {
     async getUserList () {
       const { data: res } = await this.axios.get('users', { params: this.queryInfo })

@@ -4,6 +4,9 @@ import router from './router'
 import './plugins/element.js'
 import './assets/css/global.css'
 import './assets/fonts/iconfont.css'
+import mavonEditor from 'mavon-editor'
+import 'mavon-editor/dist/css/index.css'
+
 import axios from 'axios'
 import VueAxios from 'vue-axios'
 import { Message, MessageBox } from 'element-ui'
@@ -17,6 +20,7 @@ axios.interceptors.request.use(config => {
   return config
 })
 Vue.use(VueAxios, axios)
+Vue.use(mavonEditor)
 // axios.defaults.baseURL = 'http'
 // Vue.proptype.$http = axios
 
