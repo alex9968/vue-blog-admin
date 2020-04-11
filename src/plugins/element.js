@@ -1,9 +1,9 @@
 import Vue from 'vue'
 import {
   Button,
-  Dialog,
-  Pagination,
-  Tooltip,
+  Dialog, // 会话框
+  Pagination, // 分页
+  Tooltip, // 小提示
   Switch,
   Row, Col,
   Table, TableColumn,
@@ -12,10 +12,12 @@ import {
   Input,
   Header, Container, Aside, Main,
   Menu, Submenu, MenuItemGroup, MenuItem,
-  Breadcrumb, BreadcrumbItem
+  Breadcrumb, BreadcrumbItem // 面包屑
 } from 'element-ui'
 
 // import { Message } frm 'element-ui'
+// golbal mount
+// Vue.proptype.$message = Message
 
 Vue.use(Button)
 Vue.use(Form)
@@ -40,5 +42,3 @@ Vue.use(Switch)
 Vue.use(Tooltip)
 Vue.use(Pagination)
 Vue.use(Dialog)
-// golbal mount
-// Vue.proptype.$message = Message

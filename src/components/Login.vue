@@ -22,6 +22,7 @@
 </template>
 
 <script>
+import qs from 'qs'
 export default {
   data () {
     return {
@@ -51,10 +52,10 @@ export default {
         console.info(valid)
         console.info(this)
         if (!valid) return
-        const res = await this.axios.post('login', this.loginForm)
+        const res = await this.axios.post('admins/login', qs.stringify(this.loginForm))
         if (res.data.meta.status !== 200) return this.$message.err('Login failed!')
         this.$message.success('Login success!')
-        window.sessionStorage.setItem('token',res.data.data.token)
+        window.sessionStorage.setItem('token', res.data.data.token)
         this.$router.push('/home')
       })
     }
