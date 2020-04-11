@@ -6,10 +6,10 @@
       </div>
       <el-form ref="loginFormRef" :model="loginForm" :rules="loginFormRules" label-width="0px" class="form">
         <el-form-item prop="username" >
-          <el-input v-model="loginForm.username" prefix-icon="el-icon-search"></el-input>
+          <el-input v-model="loginForm.username" prefix-icon="iconfont icon-user"></el-input>
         </el-form-item>
         <el-form-item prop="password">
-          <el-input type="password" v-model="loginForm.password" ></el-input>
+          <el-input type="password" prefix-icon="iconfont icon-3702mima" v-model="loginForm.password" ></el-input>
         </el-form-item>
         <el-form-item class="btns" >
           <el-button size="small" type="primary" @click="login">登录</el-button>

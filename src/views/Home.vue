@@ -15,22 +15,40 @@
           active-text-color="#ffd04b"
           unique-opened router
           :default-active="activePath">
-          <el-submenu :index="item.id + ''" v-for="item in menulist" :key="item.id">
-            <template slot="title">
-              <i class="el-icon-location"></i>
-              <span>{{item.authName}}</span>
-            </template>
-            <el-menu-item :index="'/' + subItem.path" v-for="subItem in item.children" :key="subItem.id" @click="saveNavState('/' + subItem.path)">
-              <template slot="title" >
-                <i class="el-icon-menu"></i>
-                <span>{{subItem.authName}}</span>
-              </template>
-            </el-menu-item>
-          </el-submenu>
+          <!-- <el&#45;submenu :index="item.id + ''" v&#45;for="item in menulist" :key="item.id"> -->
+          <!--   <template slot="title"> -->
+          <!--     <i class="el&#45;icon&#45;location"></i> -->
+          <!--     <span>{{item.authName}}</span> -->
+          <!--   </template> -->
+          <!--   <el&#45;menu&#45;item :index="'/' + subItem.path" v&#45;for="subItem in item.children" :key="subItem.id" @click="saveNavState('/' + subItem.path)"> -->
+          <!--     <template slot="title" > -->
+          <!--       <i class="el&#45;icon&#45;menu"></i> -->
+          <!--       <span>{{subItem.authName}}</span> -->
+          <!--     </template> -->
+          <!--   </el&#45;menu&#45;item> -->
+          <!-- </el&#45;submenu> -->
+
+          <el-menu-item index="users" key="user" @click="saveNavState('/users')">
+            <i class="el-icon-menu"></i>
+            <span slot="title">用户列表</span>
+          </el-menu-item>
+          <el-menu-item index="new" key="new" @click="saveNavState('/new')">
+            <i class="el-icon-menu"></i>
+            <span slot="title">新建文章</span>
+          </el-menu-item>
+
+          <el-menu-item index="list" key="list" @click="saveNavState('/list')">
+            <i class="el-icon-document"></i>
+            <span slot="title">文章管理</span>
+          </el-menu-item>
+          <el-menu-item index="chat" key="chat" @click="saveNavState('/chat')">
+            <i class="el-icon-setting"></i>
+            <span slot="title">聊天室</span>
+          </el-menu-item>
+
         </el-menu>
       </el-aside>
       <el-main>
-        <p>Hello</p>
         <router-view></router-view>
       </el-main>
     </el-container>
@@ -44,7 +62,7 @@ export default {
     // HelloWorld
   },
   created () {
-    this.getMenuList()
+    // this.getMenuList()
     this.activePath = window.sessionStorage.getItem('activePath')
   },
   data () {
@@ -59,12 +77,12 @@ export default {
       window.sessionStorage.clear()
       this.$router.push('/login')
     },
-    async getMenuList () {
-      const { data: res } = await this.axios.get('menus')
-      if (res.meta.status !== 200) return this.$message.error(res.meta.msg)
-      this.menulist = res.data
-      console.log(this.menulist)
-    },
+    // async getMenuList () {
+    //   const { data: res } = await this.axios.get('menus')
+    //   if (res.meta.status !== 200) return this.$message.error(res.meta.msg)
+    //   this.menulist = res.data
+    //   console.log(this.menulist)
+    // },
     saveNavState (activePath) {
       window.sessionStorage.setItem('activePath', activePath)
     }
@@ -102,6 +120,7 @@ export default {
 .el-aside {
   background-color: #333744;
   border-right: none;
+  width: 250px !important;
 }
 .el-main {
   background-color: #eaedf1;
