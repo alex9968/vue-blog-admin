@@ -13,7 +13,7 @@
             </el-input>
           </el-col>
           <el-col :span="5">
-            <el-button style="marginTop: 15px" type="primary" @click="getArticleList">刷新</el-button>
+            <el-button style="marginTop: 15px" round @click="getArticleList">刷新</el-button>
           </el-col>
         </el-row>
          <!-- 表格 -->
@@ -24,8 +24,8 @@
               <el-row>
                 {{scope.row.title}}
               </el-row>
-              <el-row style="marginLeft: 60%">
-                <el-button size="mini" type="primary" icon="el-icon-edit" @click="articleChanged(scope.row.id, 'title', scope.row.title)"></el-button>
+              <el-row style="margin: 10px 0 0 60%">
+                <el-button size="mini" round  icon="el-icon-edit" @click="articleChanged(scope.row.id, 'title', scope.row.title)"></el-button>
               </el-row>
             </template>
           </el-table-column>
@@ -33,9 +33,9 @@
           <el-table-column label="标签" prop="tags" width="200px">
             <template slot-scope="scope">
               <el-row :gutter="20">
-                <el-col :span="10">{{scope.row.tags}}</el-col>
-                <el-col :span="10">
-                  <el-button size="mini" type="primary" icon="el-icon-edit" @click="articleChanged(scope.row.id, 'tags', scope.row.tags)"></el-button>
+                <el-col :span="13">{{scope.row.tags}}</el-col>
+                <el-col :span="7">
+                  <el-button size="mini" round icon="el-icon-edit" @click="articleChanged(scope.row.id, 'tags', scope.row.tags)"></el-button>
                 </el-col>
               </el-row>
             </template>
@@ -47,30 +47,29 @@
                 {{scope.row.notice}}
               </el-row>
               <el-row style="marginLeft: 80%">
-                <el-button size="mini" type="primary" icon="el-icon-edit" @click="articleChanged(scope.row.id, 'notice', scope.row.notice)"></el-button>
+                <el-button size="mini" round icon="el-icon-edit" @click="articleChanged(scope.row.id, 'notice', scope.row.notice)"></el-button>
               </el-row>
             </template>
           </el-table-column>
 
           <el-table-column label="浏览量" prop="view" width="50px"></el-table-column>
 
-          <el-table-column label="修改时间" prop="createdAt" width="90px">{{getDay(createdAt)}}</el-table-column>
+          <el-table-column label="创建时间" prop="createdAt" width="90px">{{getDay(createdAt)}}</el-table-column>
+
+          <el-table-column label="修改时间" prop="updatedAt" width="90px">{{getDay(updatedAt)}}</el-table-column>
 
           <el-table-column label="状态" prop="state" width="80px">
             <template slot-scope="scope">
               <!-- {{scope.row}}获取该行数据 -->
-              <el-switch v-model="scope.row.state" @change="articleChanged(scope.row.id, 'state', scope.row.state)"></el-switch>
+              <el-switch v-model="scope.row.state" @change="articleStateChanged(scope.row.id, scope.row.state)"></el-switch>
             </template>
           </el-table-column>
           <!-- 操作按钮 -->
           <el-table-column label="操作">
             <template slot-scope="scope">
               <!-- {{scope.row}}获取该行数据 -->
-              <el-button size="mini" type="primary" icon="el-icon-edit" @click="showEditDialog(scope.row.id)"></el-button>
+              <el-button size="mini" type="primary" icon="el-icon-edit-outline" @click="showEditDialog(scope.row.id)"></el-button>
               <el-button size="mini" type="danger" icon="el-icon-delete" @click="removeUserById(scope.row.id)"></el-button>
-              <el-tooltip class="item" effect="dark" content="设置" placement="top">
-                <el-button  v-model="scope.row.mg_state" size="mini" type="warning" icon="el-icon-setting"></el-button>
-              </el-tooltip>
             </template>
           </el-table-column>
         </el-table>
@@ -159,6 +158,15 @@ export default {
       this.queryInfo.pagenum = newPage
       this.getArticleList()
     },
+    async articleStateChanged (id, state) {
+      console.info('state', state)
+      const { data: res } = await this.axios.put(`articles/${id}`, { key: 'state', value: state })
+      this.getArticleList()
+      if (!res.ok) {
+        return this.$message.error('更新状态失败！')
+      }
+      this.$message.success('更新状态成功！')
+    },
 
     async articleChanged (id, key, value) {
       console.info(id, key, value)
@@ -169,10 +177,10 @@ export default {
       var { id, key, value } = this.editForm
       const { data: res } = await this.axios.put(`articles/${id}`, { key, value })
       if (!res.ok) {
-        return this.$message.error('更新状态失败！')
+        return this.$message.error('更新属性失败！')
       }
       this.noticeDialogVisible = false
-      this.$message.success('更新状态成功！')
+      this.$message.success('更新属性成功！')
       this.getArticleList()
     },
     // 监听用户对话框的关闭事件
