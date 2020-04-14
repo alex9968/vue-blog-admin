@@ -69,7 +69,7 @@
             <template slot-scope="scope">
               <!-- {{scope.row}}获取该行数据 -->
               <el-button size="mini" type="primary" icon="el-icon-edit-outline" @click="showEditDialog(scope.row.id)"></el-button>
-              <el-button size="mini" type="danger" icon="el-icon-delete" @click="removeUserById(scope.row.id)"></el-button>
+              <el-button size="mini" type="danger" icon="el-icon-delete" @click="removeArticle(scope.row.id)"></el-button>
             </template>
           </el-table-column>
         </el-table>
@@ -87,7 +87,7 @@
 
         <!-- 修改用户对话框 -->
         <el-dialog
-          title="修改摘要"
+          title="修改属性"
           :visible.sync="noticeDialogVisible"
           @click="addDialogClosed"
           width="50%">
@@ -118,7 +118,7 @@ export default {
       queryInfo: {
         query: '',
         pagenum: 1,
-        pagesize: 2
+        pagesize: 5
       },
       articlelist: [],
       total: 0,
@@ -217,8 +217,9 @@ export default {
         this.$message.success('修改用户成功！')
       })
     },
-    async removeArticleById (id) {
+    async removeArticle (id) {
       // 弹框询问确认
+      console.log(id)
       const confirmResult = await this.$confirm('此操作将永久删除该文章, 是否继续?', '提示', {
         confirmButtonText: '确定',
         cancelButtonText: '取消',
@@ -228,10 +229,11 @@ export default {
       if (confirmResult !== 'confirm') {
         this.$message.info('已取消删除')
       }
-      const { data: res } = await this.axios.delete('users/' + id)
-      if (res.meta.status !== 200) {
+      const { data: res } = await this.axios.delete('articles/' + id)
+      if (!res.ok) {
         return this.$message.error('删除文章失败！')
       }
+      this.getUserList()
       this.$message.success('删除文章成功')
     },
     getDay (date) {
