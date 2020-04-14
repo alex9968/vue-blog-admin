@@ -11,6 +11,7 @@ import {
   Form, FormItem,
   Input,
   Popover,
+  Tag,
   Header, Container, Aside, Main,
   Menu, Submenu, MenuItemGroup, MenuItem,
   Breadcrumb, BreadcrumbItem // 面包屑
@@ -38,6 +39,7 @@ Vue.use(BreadcrumbItem)
 Vue.use(Card)
 Vue.use(Row)
 Vue.use(Col)
+Vue.use(Tag)
 Vue.use(Table)
 Vue.use(TableColumn)
 Vue.use(Switch)
