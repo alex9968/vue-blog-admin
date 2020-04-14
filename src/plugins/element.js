@@ -10,6 +10,7 @@ import {
   Card,
   Form, FormItem,
   Input,
+  Popover,
   Header, Container, Aside, Main,
   Menu, Submenu, MenuItemGroup, MenuItem,
   Breadcrumb, BreadcrumbItem // 面包屑
@@ -23,6 +24,7 @@ Vue.use(Button)
 Vue.use(Form)
 Vue.use(FormItem)
 Vue.use(Input)
+Vue.use(Popover)
 Vue.use(Header)
 Vue.use(Container)
 Vue.use(Aside)
