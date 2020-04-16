@@ -157,7 +157,7 @@ export default {
       return moment(date).format('YYYY-MM-DD')
     },
     async getArticleList () {
-      const { data: res } = await this.axios.get('articles', { params: this.queryInfo })
+      const { data: res } = await this.axios.get('articles/all', { params: this.queryInfo })
       console.info(res)
       if (!res.ok) {
         return this.$message.error('获取用户列表失败！')
