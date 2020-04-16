@@ -13,7 +13,8 @@ import { Message, MessageBox } from 'element-ui'
 Vue.prototype.$message = Message
 Vue.prototype.$confirm = MessageBox.confirm
 // axios.defaults.baseURL = 'https://www.liulongbin.top:8888/api/private/v1/'
-axios.defaults.baseURL = 'http://192.168.3.15:8000/'
+// axios.defaults.baseURL = 'http://192.168.3.15:8000/'
+axios.defaults.baseURL = 'http://server.dreamma.vip:8000/'
 axios.interceptors.request.use(config => {
   console.log(config)
   config.headers.Authorization = window.sessionStorage.getItem('token')
