@@ -22,6 +22,7 @@ axios.interceptors.request.use(config => {
 })
 Vue.use(VueAxios, axios)
 Vue.use(mavonEditor)
+
 // axios.defaults.baseURL = 'http'
 // Vue.proptype.$http = axios
 

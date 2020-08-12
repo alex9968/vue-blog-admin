@@ -2,9 +2,9 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import Welcome from '../components/Welcome.vue'
-import Users from '../components/Users.vue'
+import Visitor from '../views/Visitor/index.vue'
 import New from '../components/New.vue'
-import List from '../components/List.vue'
+import Articles from '../views/Articles.vue'
 import Chat from '../components/Chat.vue'
 
 Vue.use(VueRouter)
@@ -24,9 +24,9 @@ const routes = [
     redirect: '/welcome',
     children: [
       { path: '/welcome', component: Welcome },
-      { path: '/users', component: Users },
+      { path: '/visitor', component: Visitor },
       { path: '/new', component: New },
-      { path: '/list', component: List },
+      { path: '/articles', component: Articles },
       { path: '/chat', component: Chat }
     ]
   }
@@ -36,10 +36,10 @@ const router = new VueRouter({
   routes
 })
 // mount router navgitar
-router.beforeEach((to, from, next) => {
-  if (to.path === '/login') return next()
-  const token = window.sessionStorage.getItem('token')
-  if (!token) return next('/login')
-  next()
-})
+// router.beforeEach((to, from, next) => {
+//   if (to.path === '/login') return next()
+//   const token = window.sessionStorage.getItem('token')
+//   if (!token) return next('/login')
+//   next()
+// })
 export default router

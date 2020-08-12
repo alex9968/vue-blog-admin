@@ -15,35 +15,28 @@
           active-text-color="#ffd04b"
           unique-opened router
           :default-active="activePath">
-          <!-- <el&#45;submenu :index="item.id + ''" v&#45;for="item in menulist" :key="item.id"> -->
-          <!--   <template slot="title"> -->
-          <!--     <i class="el&#45;icon&#45;location"></i> -->
-          <!--     <span>{{item.authName}}</span> -->
-          <!--   </template> -->
-          <!--   <el&#45;menu&#45;item :index="'/' + subItem.path" v&#45;for="subItem in item.children" :key="subItem.id" @click="saveNavState('/' + subItem.path)"> -->
-          <!--     <template slot="title" > -->
-          <!--       <i class="el&#45;icon&#45;menu"></i> -->
-          <!--       <span>{{subItem.authName}}</span> -->
-          <!--     </template> -->
-          <!--   </el&#45;menu&#45;item> -->
-          <!-- </el&#45;submenu> -->
-
-          <el-menu-item index="users" key="user" @click="saveNavState('/users')">
+          <el-menu-item index="visitor" key="visitor" @click="saveNavState('/visitor')">
             <i class="el-icon-user"></i>
-            <span slot="title">用户列表</span>
+            <span slot="title">访问记录</span>
           </el-menu-item>
           <el-menu-item index="new" key="new" @click="saveNavState('/new')">
             <i class="el-icon-edit"></i>
             <span slot="title">新建文章</span>
           </el-menu-item>
 
-          <el-menu-item index="list" key="list" @click="saveNavState('/list')">
+          <el-menu-item index="articles" key="articles" @click="saveNavState('/articles')">
             <i class="el-icon-menu"></i>
             <span slot="title">文章管理</span>
           </el-menu-item>
+
           <el-menu-item index="chat" key="chat" @click="saveNavState('/chat')">
             <i class="el-icon-chat-dot-square"></i>
             <span slot="title">反馈收集</span>
+          </el-menu-item>
+
+          <el-menu-item index="test" key="test" @click="saveNavState('/test')">
+            <i class="el-icon-chat-dot-square"></i>
+            <span slot="title">test page</span>
           </el-menu-item>
 
         </el-menu>
