@@ -62,12 +62,11 @@ export default {
     queryInfo: {
       query: '',
       pagenum: 1,
-      pagesize: 2
+      pagesize: 2,
     },
     userlist: [
-        {  }
     ],
-    total: 0
+    total: 0,
   },
   created () {
     this.getUserList()
@@ -82,58 +81,58 @@ export default {
       this.userlist = res.data.users
       this.total = res.data.total
     },
-      handleSizeChange (newSize) {
-        console.log(newSize)
-        this.queryInfo.pagesize = newSize
-        this.getUserList()
-      },
-      handleCurrentChange (newPage) {
-        console.log(newPage)
-        this.queryInfo.pagenum = newPage
-        this.getUserList()
-      },
-      async useStateChanged (userinfo) {
-        console.info(userinfo)
-        const { data: res } = await this.axios.put(`users/${userinfo.id}/state/${userinfo.mg_state}`)
-        if (res.meta.status !== 200) {
-          userinfo.mg_state = !userinfo.mg_state
-          return this.$message.error('更新状态失败！')
-        }
-        this.$message.success('更新用户状态成功！')
-      },
-      editUserInfo () {
-        this.$refs.editFormRef.validate(async valid => {
-          console.log(valid)
-          if (!valid) return
-          const { data: res } = await this.axios.post('users/' + this.editForm.id, {
-            email: this.editForm.email,
-            mobile: this.editForm.mobile
-          })
-          if (res.meta.status !== 200) {
-            return this.$message.error('修改用户失败！')
-          }
-          this.editDialogVisible = false
-          this.getUserList()
-          this.$message.success('修改用户成功！')
-        })
-      },
-      async removeUserById (id) {
-        // 弹框询问确认
-        const confirmResult = await this.$confirm('此操作将永久删除该用户, 是否继续?', '提示', {
-          confirmButtonText: '确定',
-          cancelButtonText: '取消',
-          type: 'warning'
-        }).catch(err => err)
-        console.log(confirmResult)
-        if (confirmResult !== 'confirm') {
-          this.$message.info('已取消删除')
-        }
-        const { data: res } = await this.axios.delete('users/' + id)
-        if (res.meta.status !== 200) {
-          return this.$message.error('删除用户失败！')
-        }
-        this.$message.success('删除用户成功')
+    handleSizeChange (newSize) {
+      console.log(newSize)
+      this.queryInfo.pagesize = newSize
+      this.getUserList()
+    },
+    handleCurrentChange (newPage) {
+      console.log(newPage)
+      this.queryInfo.pagenum = newPage
+      this.getUserList()
+    },
+    async useStateChanged (userinfo) {
+      console.info(userinfo)
+      const { data: res } = await this.axios.put(`users/${userinfo.id}/state/${userinfo.mg_state}`)
+      if (res.meta.status !== 200) {
+        userinfo.mg_state = !userinfo.mg_state
+        return this.$message.error('更新状态失败！')
       }
+      this.$message.success('更新用户状态成功！')
+    },
+    editUserInfo () {
+      this.$refs.editFormRef.validate(async valid => {
+        console.log(valid)
+        if (!valid) return
+        const { data: res } = await this.axios.post('users/' + this.editForm.id, {
+          email: this.editForm.email,
+          mobile: this.editForm.mobile
+        })
+        if (res.meta.status !== 200) {
+          return this.$message.error('修改用户失败！')
+        }
+        this.editDialogVisible = false
+        this.getUserList()
+        this.$message.success('修改用户成功！')
+      })
+    },
+    async removeUserById (id) {
+      // 弹框询问确认
+      const confirmResult = await this.$confirm('此操作将永久删除该用户, 是否继续?', '提示', {
+        confirmButtonText: '确定',
+        cancelButtonText: '取消',
+        type: 'warning'
+      }).catch(err => err)
+      console.log(confirmResult)
+      if (confirmResult !== 'confirm') {
+        this.$message.info('已取消删除')
+      }
+      const { data: res } = await this.axios.delete('users/' + id)
+      if (res.meta.status !== 200) {
+        return this.$message.error('删除用户失败！')
+      }
+      this.$message.success('删除用户成功')
+    }
   }
 }
 </script>
