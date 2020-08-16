@@ -28,7 +28,7 @@ export default {
     return {
       loginForm: {
         username: 'wuxian',
-        password: 'wuxianroot'
+        password: 'wuxian'
       },
       loginFormRules: {
         username: [
