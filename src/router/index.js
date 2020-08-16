@@ -6,6 +6,7 @@ import Visitor from '../views/Visitor/index.vue'
 import New from '../components/New.vue'
 import Articles from '../views/Articles.vue'
 import Chat from '../components/Chat.vue'
+import Test from '../views/Test.vue'
 
 Vue.use(VueRouter)
 
@@ -27,7 +28,8 @@ const routes = [
       { path: '/visitor', component: Visitor },
       { path: '/new', component: New },
       { path: '/articles', component: Articles },
-      { path: '/chat', component: Chat }
+      { path: '/chat', component: Chat },
+      { path: '/test', component: Test }
     ]
   }
 ]
